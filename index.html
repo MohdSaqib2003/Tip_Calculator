@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Tip</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+        body{
+            background-image: url('./background.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    
+        .heading {
+            background-color: tomato;
+            text-align: center;
+            padding: 7px;
+        }
+
+        .container {
+            width: 285px;
+            /* height: 480px; */
+            margin-top: 50px;
+            border: 3px solid #7a797b;
+            border-radius: 20px;
+            padding: 2px;
+            /* margin: 5px; */
+            background-color: white;
+        }
+
+        option {
+            font-size: 18px;
+            color: white;
+            background-color: grey;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+
+    <h1 class="heading"> Internship Task - 2 </h1>
+
+    <div class="container">
+        <h4 class="h4 text-center">Tip calculator</h4>
+
+
+        <div style="margin-top: 20px;">
+
+            <label for="bill" class="form-label pl-3 pl-3">How much was your bill?</label>
+            <input type="text" id="bill" class="form-control" >
+            <label class="col-form-label" for="service">How was your service?</label>
+            <select id="service" class="form-select ">
+                <option value="" selected>--Choose an option--</option>
+                <option value="30"> 30% - Outstanding </option>
+                <option value="20"> 20% - Good </option>
+                <option value="15"> 15% - It's Ok </option>
+                <option value="10"> 10% - Bad </option>
+                <option value="5"> 5% - Terrible </option>
+            </select><br>
+
+            <label for="people" class="form-label">How many people are sharing the bill?</label>
+            <input type="text" id="people" class="form-control"> <br>
+            <input type="button" onclick="tip_calculate()" value="Calculate"
+                class="btn btn-primary justify-content-cente" style="margin:auto;display: block;">
+        </div><br>
+
+        <div class="text-center" id="tip_disp">
+            <!-- <h6> <b> TIP AMOUNT </b></h6>
+            <h3>&#8377; 75.00</h3>
+            <h6>each</h6> -->
+        </div>
+    </div>
+    <script>
+        function tip_calculate() {
+            let bill = document.getElementById('bill').value;
+            let service = document.getElementById('service').value;
+            let people = document.getElementById('people').value;
+
+            let tip_amount = ((service / 100) * bill) / people;
+            console.log(tip_amount);
+
+            let tip_disp = document.getElementById('tip_disp');
+            if (bill !== "" && service !== "" && people !== "") {
+                tip_disp.innerHTML = `<h6> <b> TIP AMOUNT </b></h6>
+            <h3 style="margin-top:-7px">&#8377; ${tip_amount.toFixed(2)} </h3>
+            <h6 style="margin-top:-12px">each</h6>`;
+
+                console.log('inside if');
+            } else {
+                tip_disp.innerHTML = "";
+                console.log('inside if');
+            }
+        }
+    </script>
+</body>
+
+</html>
